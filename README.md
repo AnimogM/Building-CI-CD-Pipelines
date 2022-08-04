@@ -1,4 +1,4 @@
-[![Python application test with Github Actions](https://github.com/AnimogM/Building-CI-CD-Pipelines/actions/workflows/main.yml/badge.svg)](https://github.com/AnimogM/Building-CI-CD-Pipelines/actions/workflows/main.yml)
+[[![Python application test with Github Actions](https://github.com/AnimogM/Building-CI-CD-Pipelines/actions/workflows/main.yml/badge.svg)](https://github.com/AnimogM/Building-CI-CD-Pipelines/actions/workflows/main.yml)
 
 # Overview
 
@@ -63,3 +63,4 @@ It an be improvedon by having multiple environments (Dev, Staging and Production
 <TODO: Add link Screencast on YouTube>
 
 
+](https://docs.microsoft.com/en-us/azure/cloud-shell/media/overview/portal-launch-icon.png)
