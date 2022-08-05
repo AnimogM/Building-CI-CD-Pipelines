@@ -16,44 +16,93 @@ This project Setup is on a Continuous Integration/Continuous delivery pipeline f
 * Architectural Diagram (Shows how key parts of the system work)
 ![diagram](https://user-images.githubusercontent.com/80972735/182913586-14c48139-3ecb-4418-8ae5-744cba3d207e.png)
 
-### Launch Azure Cloud Shell
+## Launch Azure Cloud Shell
+- login to azure portal at https://portal.azure.com/ and open the cloud shell
 
-- sign up or login to azure portal with https://portal.azure.com/
-- click on the icon to lauch the cloud shell
-  ![cloud shell](https://docs.microsoft.com/en-us/azure/cloud-shell/media/overview/portal-launch-icon.png)
-**Note: you have to setup a storage account if you are using it for the first time**
-* Project running on Azure App Service
-![web_app](https://user-images.githubusercontent.com/80972735/182914306-a0c221b1-4979-42a9-b675-1c3f40f6cb37.PNG)
+![image](screenshots/cloud-shell.PNG)
 
-* Project cloned into Azure Cloud Shell![cloned repo](https://user-images.githubusercontent.com/80972735/182914356-47199a65-0c87-430d-a3b6-0a20b6690aed.PNG)
- 
+## Generate SSH key and upload the public key to github
 
-* Passing tests that are displayed after running the `make all` command from the `Makefile`
-![make_all_passed](https://user-images.githubusercontent.com/80972735/182914423-da7da3e3-c5bc-4296-9c8f-13446daccf7e.PNG)
+```
+ssh-keygen -t rsa
+```
+![image](screenshots/add-ssh-key.PNG)
 
+## Clone the repository using Azure Cloud Shell
 
-* Successful deploy of the project in Azure Pipelines.  [Note the official documentation should be referred to and double checked as you setup CI/CD](https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/python-webapp?view=azure-devops).
-![build1](https://user-images.githubusercontent.com/80972735/182914544-462693d4-f848-44fd-8e81-94dc4af5f592.PNG)
+```
+git clone git@github.com:AnimogM/Building-CI-CD-Pipelines.git
+```
+![image](screenshots/cloned-repo.PNG)
 
-![build2](https://user-images.githubusercontent.com/80972735/182914575-e60bc0ed-31c1-4d46-a851-d9463aac7c7d.PNG)
+## Create a new python virtual environnement
 
-* Running Azure App Service from Azure Pipelines automatic deployment
-![app_service](https://user-images.githubusercontent.com/80972735/182914663-6b6a8455-fccc-40e4-8a63-d92b80d45fc0.PNG)
-
-* Successful prediction from deployed flask app in Azure Cloud Shell.  [Use this file as a template for the deployed prediction](https://github.com/udacity/nd082-Azure-Cloud-DevOps-Starter-Code/blob/master/C2-AgileDevelopmentwithAzure/project/starter_files/flask-sklearn/make_predict_azure_app.sh).
-The output should look similar to this:
-![prediction](https://user-images.githubusercontent.com/80972735/182914702-12a34283-ded3-490a-a778-d0b05c5b4b34.PNG)
-
-```bash
-udacity@Azure:~$ ./make_predict_azure_app.sh
-Port: 443
-{"prediction":[20.35373177134412]}
+```
+cd Building-CI-CD-Pipelines
+```
+```
+python3 -m venv venv
+```
+```
+venv/bin/activate
 ```
 
-* Output of streamed log files from deployed application
-![log_stream](https://user-images.githubusercontent.com/80972735/182914735-2dfb9405-131d-4fcd-a60a-9e357c2dcadb.PNG)
+## Install dependencies and build the app
 
-> 
+```
+make all
+```
+![iamge](screenshots/make_all_passed.PNG)
+
+## Create Azure App Service
+
+```
+az webapp up --sku F1 -n maryam-ml-app
+```
+![iamge](screenshots/app_service.PNG)
+
+## Setup Github Actions
+
+![iamge](screenshots/github-actions.PNG)
+![iamge](screenshots/test_passed.PNG)
+
+
+## Setup Azure DevOps
+
+- Go to https://dev.azure.com and sign in.
+- Create a new private project.
+- Under Project Settings create a new service connection and select Azure Resource Manager.
+- Create a Python-specific pipeline to deploy to App Service, and linked it to your GitHub repo.
+
+![image](screenshots/build1.PNG)
+![image](screenshots/build2.PNG)
+
+## Get app logs
+
+```
+az webapp log tail
+```
+![image](screenshots/log.PNG)
+
+
+
+## Test the app is up and running
+
+- set the app name inside **make_predict_azure_app.sh** file
+
+![image](screenshots/edit-file.PNG)
+
+
+``` ./make_predict_azure_app.sh
+```
+![image](screenshots/prediction.PNG)
+
+ 
+
+* Output of streamed log files from deployed application
+![image](screenshots/log_stream.PNG)
+![image](screenshots/log.PNG)
+
 
 ## Enhancements
 
