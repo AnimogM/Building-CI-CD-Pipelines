@@ -58,17 +58,18 @@ make all
 ```
 ![iamge](screenshots/make_all_passed.PNG)
 
+## Setup Github Actions
+
+![iamge](screenshots/github-actions.PNG)
+![iamge](screenshots/test_passed.PNG)
+
+
 ## Create Azure App Service
 
 ```
 az webapp up --sku F1 -n maryam-ml-app
 ```
 ![iamge](screenshots/app_service.PNG)
-
-## Setup Github Actions
-
-![iamge](screenshots/github-actions.PNG)
-![iamge](screenshots/test_passed.PNG)
 
 
 ## Setup Azure DevOps
