@@ -48,7 +48,7 @@ cd Building-CI-CD-Pipelines
 python3 -m venv venv
 ```
 ```
-venv/bin/activate
+source venv/bin/activate
 ```
 
 ## Install dependencies and build the app
