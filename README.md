@@ -26,6 +26,10 @@ This project Setup is on a Continuous Integration/Continuous delivery pipeline f
 ```
 ssh-keygen -t rsa
 ```
+
+**NOTE:** use ```cat ~/.ssh/id_rsa.pub``` if you have generated it before
+
+
 ![image](screenshots/add-ssh-key.PNG)
 
 ## Clone the repository using Azure Cloud Shell
